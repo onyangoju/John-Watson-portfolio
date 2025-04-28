@@ -1,335 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Watson - UI Designer & Developer</title>
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-      /* Reset and base styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Arial", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f8f9fa;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      /* Container */
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      /* Header styles */
-      header {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: transparent;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      header.scrolled {
-        background-color: #0d0b1a;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      }
-      .banner {
-        padding-top: 200px;
-        margin-top: -80px;
-      }
-
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-      }
-
-      .navbar-brand {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .navbar-brand i {
-        margin-right: 10px;
-      }
-
-      .nav-menu {
-        display: flex;
-        list-style: none;
-      }
-
-      .nav-item {
-        margin-left: 2rem;
-      }
-
-      .nav-link {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      .nav-link:hover {
-        color: #00a86b;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 0.6rem 1.5rem;
-        background-color: #00a86b;
-        color: #fff;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: background-color 0.3s;
-      }
-
-      .btn-rounded {
-        border-radius: 30px;
-      }
-
-      .btn:hover {
-        background-color: #008855;
-      }
-
-      .btn-secondary {
-        background-color: transparent;
-        border: 2px solid #00a86b;
-        color: #fff;
-      }
-
-      .btn-secondary:hover {
-        background-color: rgba(0, 168, 107, 0.2);
-        color: #fff;
-      }
-
-      /* Header utilities */
-      .header-utilities {
-        display: flex;
-        align-items: center;
-      }
-
-      .search-icon {
-        margin-right: 15px;
-        font-size: 1.2rem;
-        color: #fff;
-        cursor: pointer;
-      }
-
-      .dark-mode-toggle {
-        width: 40px;
-        height: 22px;
-        background-color: #f0f0f0;
-        border-radius: 15px;
-        position: relative;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        color: #000;
-        font-size: 1.2rem;
-      }
-
-      .toggle-label {
-        width: 40px;
-        height: 22px;
-        background-color: #f0f0f0;
-        border-radius: 15px;
-        position: relative;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        color: #000;
-        font-size: 1.2rem;
-      }
-
-      .toggle-label .toggle-circle {
-        width: 18px;
-        height: 18px;
-        background-color: #fff;
-        border-radius: 50%;
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        transition: transform 0.3s;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-      }
-
-      #theme-toggle:checked + .dark-mode-toggle .toggle-label {
-        background-color: #333;
-        color: #fff;
-      }
-
-      #theme-toggle:checked + .dark-mode-toggle .toggle-label .toggle-circle {
-        transform: translateX(18px);
-      }
-
-      .dark-icon {
-        position: absolute;
-        right: 6px;
-        top: 3px;
-        font-size: 10px;
-        color: #333;
-      }
-
-      .light-icon {
-        position: absolute;
-        left: 6px;
-        top: 3px;
-        font-size: 10px;
-        color: #f0ad4e;
-      }
-
-      /* Banner/Hero section */
-      .banner {
-        background-color: #151421;
-        background-image: linear-gradient(
-            to bottom,
-            rgba(25, 30, 30, 0.9),
-            rgba(25, 30, 30, 0.85)
-          ),
-          url("https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner1.jpg");
-        background-size: cover;
-        background-position: center;
-        padding: 150px 0 80px;
-        color: #fff;
-      }
-
-      .banner::before {
-        display: none;
-      }
-
-      .banner .container {
-        position: relative;
-        z-index: 2;
-      }
-
-      .banner-content {
-        display: flex;
-        align-items: center;
-      }
-
-      .banner-text {
-        flex: 1;
-      }
-
-      .banner-image {
-        flex: 1;
-        text-align: right;
-      }
-
-      .banner-image img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        color: #007bff;
-      }
-
-      /* Typing animation styles */
-      .typing-text {
-        position: absolute;
-        white-space: nowrap;
-        margin: 0;
-        padding-right: 0.3em;
-        font-size: 2.5rem;
-        font-weight: 700;
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
-        text-transform: uppercase;
-        color: #000;
-        -webkit-text-stroke: 2px #fff;
-        text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-          1px 1px 0 #fff;
-        opacity: 0;
-        animation-duration: 8s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-      }
-      .typing-1 {
-        animation-name: fadeInOut;
-        animation-delay: 0s;
-      }
-      .typing-2 {
-        animation-name: fadeInOut;
-        animation-delay: 2s;
-      }
-      .typing-3 {
-        animation-name: fadeInOut;
-        animation-delay: 4s;
-      }
-      .typing-4 {
-        animation-name: fadeInOut;
-        animation-delay: 6s;
-      }
-
-      .typing-container {
-        position: relative;
-        margin-bottom: 2rem;
-        height: 3rem;
-        overflow: hidden;
-      }
-
-      @keyframes fadeInOut {
-        0%,
-        20% {
-          opacity: 1;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        25%,
-        100% {
-          opacity: 0;
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
         }
-      }
-
-      /* Featured section */
-      .featured {
-        padding: 80px 0;
-        background-color: #fff;
-      }
-
-      .featured-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-      }
-
-      .featured-item {
-        text-align: center;
-        padding: 20px;
-      }
-
-      .featured-number {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #007bff;
+        
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #1B3427;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 2rem;
+        }
+        
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #00a86b;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: #00a86b;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+                
+        .btn-rounded {
+            border-radius: 30px;
+        }
+        
+        .btn:hover {
+            background-color: #008855;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #00a86b;
+            color: #fff;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f0f0f0;
+            background-color: rgba(0, 168, 107, 0.2);
+            color: #fff;
+        }
+        
+        /* Header utilities */
+        .header-utilities {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .dark-mode-toggle {
+            width: 40px;
+            height: 22px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .toggle-circle {
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .dark-icon {
+            position: absolute;
+            right: 6px;
+            top: 3px;
+            font-size: 10px;
+            color: #333;
+        }
+        
+        .light-icon {
+            position: absolute;
+            left: 6px;
+            top: 3px;
+            font-size: 10px;
+            color: #f0ad4e;
+        }
+        
+        /* Banner/Hero section */
+        .banner {
+            background-color: #151421;
+            background-image: 
+                linear-gradient(
+                    to bottom,
+                    rgba(25, 30, 30, 0.9),
+                    rgba(25, 30, 30, 0.85)
+                ),
+                url('https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            color: #fff;
+        }
+        
+        .banner-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .banner-text {
+            flex: 1;
+        }
+        
+        .banner-image {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .banner-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #007bff;
+        }
+        
+        /* Featured section */
+        .featured {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .featured-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .featured-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .featured-text {
+            font-size: 1.1rem;
+        }
+        
+        /* About section */
+        .about {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .title-small {
+            font-size: 1rem;
+            color: #777;
+            font-weight: 500;
+        }
+        
         .title-main {
             font-size: 2rem;
             margin-bottom: 1.5rem;
@@ -351,15 +284,11 @@
         .single-info span {
             font-weight: bold;
             margin-right: 10px;
+            display: inline-block;
         }
         
         .single-info p {
             margin: 0;
-        }
-        .single-info a {
-            color: inherit;
-            text-decoration: none;
-            cursor: default;
         }
         
         .social-links {
@@ -402,12 +331,27 @@
         }
         
         .skills-content {
-            display: grid;
-            grid-template-columns: 50% 50%;
+            display: flex;
             gap: 50px;
             align-items: center;
+            flex-wrap: wrap;
         }
         
+        /* Features section */
+.features-content {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 20px;
+    align-items: start;
+    padding: 40px 0;
+}
+
+.features-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+                
         .skills-image {
             flex: 1;
             padding-right: 30px;
@@ -418,11 +362,11 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+                
         .skills-text {
             flex: 1;
         }
-        
+
         .skill-item {
             margin-bottom: 30px;
         }
@@ -437,7 +381,6 @@
         .skill-percent {
             font-weight: normal;
             color: #777;
-            display: inline-block;
         }
         
         .skill-bar {
@@ -445,7 +388,6 @@
             background-color: #f0f0f0;
             border-radius: 5px;
             overflow: hidden;
-            position: relative;
         }
         
         .skill-progress {
@@ -453,15 +395,6 @@
             background-color: #00a86b;
             border-radius: 5px;
             position: relative;
-        }
-        
-        .skill-progress::after {
-            content: attr(data-percent);
-            position: absolute;
-            right: 0;
-            top: -25px;
-            font-size: 12px;
-            color: #777;
         }
         
         /* Services section */
@@ -504,51 +437,8 @@
             margin-bottom: 15px;
             color: #000;
         }
-        
-        /* Portfolio section */
-        .portfolio {
-            padding: 80px 0;
-            background-color: #fff;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-        
-        .portfolio-item:hover .portfolio-info {
-            transform: translateY(0);
-        }
-        
+
+
         /* Contact section */
         .contact {
             padding: 80px 0;
@@ -578,6 +468,43 @@
         .contact-form textarea {
             height: 150px;
         }
+
+        #clients {
+        padding: 30px 0;
+        background-color: #1A4D2E;
+        overflow: hidden;
+    }
+    
+    .logos-grid {
+        display: flex;
+        animation: slide 15s linear infinite;
+    }
+    
+    .logo-item {
+        margin-right: 30px;
+    }
+    
+    .logo-item img {
+        width: 250px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+    
+    .section-heading h2 {
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        color: #fff;
+    }
+    
+    @keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
         
         /* Footer */
         footer {
@@ -617,8 +544,8 @@
             color: #007bff;
         }
         
-        .copyright {
-            text-align: center;
+.copyright {
+            text-align: left;
             padding-top: 20px;
             border-top: 1px solid #444;
         }
@@ -690,12 +617,6 @@
         .dark-mode .contact {
             background-color: #0d2010;
         }
-        .dark-mode #services {
-            color: #fff;
-        }
-        .dark-mode #services .service-title {
-            color: #fff;
-        }
         
         .dark-mode .portfolio,
         .dark-mode .skills,
@@ -716,7 +637,7 @@
         .dark-mode .search-icon {
             color: #ddd;
         }
-        
+                
         /* Dropdown styles */
         .dropdown {
             position: relative;
@@ -725,7 +646,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #fff;
+            background-color: #1B3427;
             min-width: 200px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             z-index: 1;
@@ -738,13 +659,13 @@
         }
         
         .dropdown-content a {
-            color: #000;
+            color: #fff;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
             transition: background-color 0.3s;
         }
-        
+                
         .dropdown-content a:hover {
             background-color: #2a4a3a;
         }
@@ -756,19 +677,12 @@
             vertical-align: middle;
         }
         
-        .section-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #777;
-        }
-        
         .section-description-left {
             text-align: left;
             margin-bottom: 30px;
             color: #777;
         }
-        
+                
         /* Features section */
         .features {
             padding: 80px 0;
@@ -782,11 +696,12 @@
             align-items: center;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+}
         
         .feature-item {
             display: flex;
@@ -827,7 +742,7 @@
                 margin-bottom: 30px;
                 text-align: center;
             }
-            
+                        
             .features-image img {
                 max-width: 80%;
             }
@@ -842,7 +757,7 @@
                 max-width: 100%;
             }
         }
-        
+                
         /* Stats section */
         .stats {
             padding: 80px 0;
@@ -912,7 +827,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+                
         .gallery-image img {
             width: 100%;
             height: auto;
@@ -945,7 +860,7 @@
         .gallery-image:hover .gallery-overlay {
             opacity: 1;
         }
-        
+                
         .gallery-overlay h3 {
             font-size: 1.2rem;
             margin-bottom: 5px;
@@ -973,8 +888,6 @@
         .clients {
             padding: 60px 0;
             background-color: #f8f9fa;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
         }
         
         .logos-grid {
@@ -1014,7 +927,7 @@
                 gap: 20px;
             }
         }
-
+        
         /* Additional footer styles */
         .footer {
             background-color: #151421;
@@ -1063,7 +976,7 @@
         .social ul li {
             margin-left: 15px;
         }
-        
+                
         .social ul li a {
             display: flex;
             align-items: center;
@@ -1110,22 +1023,19 @@
                             <a href="#">Elements Page</a>
                             <a href="#">404 Page</a>
                             <a href="#">Landing Page</a>
-                        </div>
+        </div>
                     </li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="header-utilities">
-                    <a href="#contact" class="btn btn-rounded">Hire Me</a>
-                    <div class="search-icon" style="margin-left: 15px;"><i class="fa fa-search"></i></div>
-    <input type="checkbox" id="theme-toggle" hidden>
-    <div class="dark-mode-toggle" style="margin-left: 15px;">
-        <label for="theme-toggle" class="toggle-label" style="cursor:pointer;">
-            <span class="light-icon"><i class="fa fa-sun"></i></span>
-            <span class="dark-icon"><i class="fa fa-moon"></i></span>
-            <span class="toggle-circle"></span>
-        </label>
-    </div>
-                </div>
+                        <a href="#contact" class="btn btn-rounded">Hire Me</a>
+                        <div class="search-icon" style="margin-left: 15px;"><i class="fa fa-search"></i></div>
+                        <div class="dark-mode-toggle" style="margin-left: 15px;">
+                        <span class="light-icon">☀</span>
+                        <span class="dark-icon">☽</span>
+                        <div class="toggle-circle"></div>
+                        </div>
+            </div>
             </nav>
         </div>
     </header>
@@ -1136,72 +1046,71 @@
             <div class="banner-content">
                 <div class="banner-text">
                     <h1>Hi, I'm John Watson</h1>
-                    <h3 class="typing-container">
-                        <span class="typing-text typing-1">Photographer</span>
-                        <span class="typing-text typing-2">Freelancer</span>
-                        <span class="typing-text typing-3">Web Designer</span>
-                        <span class="typing-text typing-4">Web Developer</span>
-                    </h3>
+                    <h3>UI Designer & Developer</h3>
                     <p>I love Graphic design and Photography and have been working on my portfolio since 2016. I Can give your business a new Creative start right away!</p>
                     <div style="margin-top: 30px;">
                         <a href="#contact" class="btn btn-rounded">Hire Me</a>
-                        <a href="#portfolio" class="btn btn-secondary btn-rounded" style="margin-left: 15px; border: 2px solid #fff; color: #fff; background: transparent;">My Portfolio</a>
-                    </div>
-                </div>
+                        <a href="#portfolio" class="btn btn-secondary btn-rounded" style="margin-left: 15px;">My Portfolio</a>
+                        </div>
+            </div>
                 <div class="banner-image">
                     <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner.png" alt="John Watson">
-                </div>
-            </div>
+                    </div>
+             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About section -->
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
                     <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/about.jpg" alt="About John Watson">
-                </div>
+                        </div>
                 <div class="about-text">
-                    <p class="title-small">MY BIOGRAPHY</p>
+                    <p class="title-small">My Biography</p>
                     <h2 class="title-main">A Lead UI Designer & Web Developer based in UK</h2>
-                    <p>I love Graphic design and Photography and have been working on my portfolio since 2016. I Can give your business a new Creative start right away! Contact me and we will discuss your projects!</p>
-                    
-                    <div class="info-grid">
-                        <div class="single-info">
-                            <span>Name:</span>
-                            <p>John Watson</p>
-                        </div>
-                        <div class="single-info">
-                            <span>From:</span>
-                            <p>London, UK</p>
-                        </div>
-                        <div class="single-info">
-                            <span>Email:</span>
-                            <p><a href="mailto:info@example.com">example@mail.com</a></p>
-                        </div>
-                        <div class="single-info">
-                            <span>Phone:</span>
-                            <p><a href="tel:+212345678901">+21 234 567 8901</a></p>
-                        </div>
+            <p class="my-4 pe-lg-5">I love Graphic design and Photography and have been working on my portfolio since 2016. I Can give your business a new Creative start right away! Contact me and we will discuss your projects!</p>
+
+            <div class="my-info mt-4">
+                <div class="info-row" style="display: flex; gap: 40px; margin-bottom: 15px;">
+                    <div class="single-info" style="flex: 1; display: flex; align-items: center;"><span style="min-width: 60px;">Name:</span>
+                        <p style="margin-left: 10px;">John Watson</p>
                     </div>
-                    
-                    <ul class="social-links">
-                        <h5>Follow me on</h5>
-                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    </ul>
-                    
-                    <div style="margin-top: 30px;">
-                        <a href="#contact" class="btn btn-rounded">Hire Me</a>
-                        <a href="#" class="btn btn-rounded" style="margin-left: 15px;">Download CV</a>
+                    <div class="single-info" style="flex: 1; display: flex; align-items: center;"><span style="min-width: 60px;">Email:</span>
+                        <p style="margin-left: 10px;"><a href="mailto:info@example.com">info@example.com</a></p>
+                    </div>
+                </div>
+                <div class="info-row" style="display: flex; gap: 40px;">
+                    <div class="single-info" style="flex: 1; display: flex; align-items: center;"><span style="min-width: 60px;">From:</span>
+                        <p style="margin-left: 10px;">London, UK</p>
+                    </div>
+                    <div class="single-info" style="flex: 1; display: flex; align-items: center;"><span style="min-width: 60px;">Phone:</span>
+                        <p style="margin-left: 10px;"><a href="tel:+21 234 567 8901">+21 234 567 8901</a></p>
                     </div>
                 </div>
             </div>
+            
+            <ul class="social-links">
+                <h5>Follow me on</h5>
+                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            
+            <div class="w3l-btn">
+                <a href="#contact" class="btn btn-rounded">Hire Me</a>
+                <a href="#" class="btn btn-rounded" style="margin-left: 15px;">Download CV</a>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
+</section>
+
+<section>
+</section>
 
     <!-- Services Section -->
     <section id="services" class="services">
@@ -1232,37 +1141,34 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="skills-content">
-                <div class="skills-image">
-                    <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/about1.jpg" alt="Skills Image">
-                </div>
-                <div class="skills-text">
-                    <p class="title-small">MY SKILLS</p>
-                    <h2 class="title-main">My Featured Skills</h2>
-                    <p class="section-description-left">I Specialize in Branding and Strategy, and am passionate about creating Awesome Portfolio work. And I always ready to impress the audience with my Creativity.</p>
-                    
-                    <div class="skills-bars">
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>UI/UX Design</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container"> 
+                <div class="skills-content">
+                    <div class="skills-image">
+                        <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/about1.jpg" alt="Skills Image">
+                    </div>
+                    <div class="skills-text">
+                        <p class="title-small">My Skills</p>
+                        <h2 class="title-main">My Featured Skills</h2>
+                        <p class="section-description-left">I Specialize in Branding and Strategy, and am passionate about creating Awesome Portfolio work. And I always ready to impress the audience with my Creativity.</p>
                         
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Ideas & Technology</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
+                        <div class="skills-bars">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>UI/UX Design</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">
+                                        <span>Ideas & Technology</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
                         </div>
-                        
                         <div class="skill-item">
                             <div class="skill-name">
                                 <span>Branding Design</span>
@@ -1270,94 +1176,92 @@
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 85%"></div>
                             </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Responsive Web Design</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Responsive Web Design</span>
                     </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                      </div>
+                     </div>
+                   </div>
                 </div>
             </div>
         </div>
     </section>
-
+     
+    
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <div class="features-content">
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fab fa-wordpress-simple"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">Web Development</h4>
-                            <p>Creating responsive, fast-loading websites with clean code and modern frameworks that deliver exceptional user experiences.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">Design Trends</h4>
-                            <p>Staying current with the latest design aesthetics and UI patterns to create modern, visually appealing digital experiences.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">Research & Analysis</h4>
-                            <p>Thorough market research and data analysis to ensure projects are strategically positioned for maximum audience impact.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">Customer support</h4>
-                            <p>Dedicated assistance and ongoing maintenance to ensure your digital assets continue to perform optimally long after launch.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">Responsive design</h4>
-                            <p>Crafting interfaces that look and function beautifully across all devices, from desktop monitors to mobile phones.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4 class="feature-title">PSD Design</h4>
-                            <p>Converting design concepts into pixel-perfect templates with attention to detail that ensures brand consistency.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="features-image">
-                    <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner.png" alt="Features Image" class="img-fluid">
-                </div>
-            </div>
+<div class="features-content">
+            
+<div class="features-grid">
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fab fa-wordpress-simple"></i>
         </div>
-    </section>
+        <div class="feature-text">
+            <h4 class="feature-title">Web Development</h4>
+            <p>Creating responsive, fast-loading websites with clean code and modern frameworks that deliver exceptional user experiences.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fas fa-paint-brush"></i>
+        </div>
+        <div class="feature-text">
+            <h4 class="feature-title">Design Trends</h4>
+            <p>Staying current with the latest design aesthetics and UI patterns to create modern, visually appealing digital experiences.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="feature-text">
+            <h4 class="feature-title">Research & Analysis</h4>
+            <p>Thorough market research and data analysis to ensure projects are strategically positioned for maximum audience impact.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="feature-text">
+            <h4 class="feature-title">Customer support</h4>
+            <p>Dedicated assistance and ongoing maintenance to ensure your digital assets continue to perform optimally long after launch.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="feature-text">
+            <h4 class="feature-title">Responsive design</h4>
+            <p>Crafting interfaces that look and function beautifully across all devices, from desktop monitors to mobile phones.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">
+            <i class="fas fa-layer-group"></i>
+        </div>
+        <div class="feature-text">
+            <h4 class="feature-title">PSD Design</h4>
+            <p>Converting design concepts into pixel-perfect templates with attention to detail that ensures brand consistency.</p>
+        </div>
+    </div>
+</div>
+
+<div class="features-image">
+    <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner.png" alt="Features Image" class="img-fluid">
+</div>
+        </div>
+        
+     </div>
+    </div> 
+</section>
 
     <!-- Stats Section -->
     <section id="stats" class="stats">
@@ -1386,34 +1290,34 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="portfolio" class="portfolio-gallery">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2 class="title-main">My Success Work</h2>
-            </div>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-image">
-                        <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog1.jpg" alt="Architecture">
-                        <div class="gallery-overlay">
-                            <h3>Architecture</h3>
-                            <p>This is a short description</p>
-                        </div>
-                    </div>
+        <!-- Gallery Section -->
+        <section id="portfolio" class="portfolio-gallery">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <h2 class="title-main">My Success Work</h2>
                 </div>
                 
-                <div class="gallery-item">
-                    <div class="gallery-image">
-                        <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog2.jpg" alt="Corporate">
-                        <div class="gallery-overlay">
-                            <h3>Corporate</h3>
-                            <p>This is a short description</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog1.jpg" alt="Architecture">
+                            <div class="gallery-overlay">
+                                <h3>Architecture</h3>
+                                <p>This is a short description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
+                    
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog2.jpg" alt="Corporate">
+                            <div class="gallery-overlay">
+                                <h3>Corporate</h3>
+                                <p>This is a short description</p>
+                            </div>
+                        </div>
+                    </div>
+                                    
                 <div class="gallery-item">
                     <div class="gallery-image">
                         <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog3.jpg" alt="Ecommerce">
@@ -1443,7 +1347,7 @@
                         </div>
                     </div>
                 </div>
-                
+                                
                 <div class="gallery-item">
                     <div class="gallery-image">
                         <img src="https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/blog6.jpg" alt="Real Estate">
@@ -1457,10 +1361,10 @@
         </div>
     </section>
 
+    <!-- Clients -->
     <section id="clients" class="clients">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Our Clients</h2>
             </div>
     
             <div class="logos-grid">
@@ -1482,180 +1386,69 @@
             </div>
         </div>
     </section>
-    
-    <style>
-    #clients {
-        padding: 30px 0;
-        background-color: #1A4D2E;
-        overflow: hidden;
-    }
-    
-    .logos-grid {
-        display: flex;
-        animation: slide 15s linear infinite;
-    }
-    
-    .logo-item {
-        margin-right: 30px;
-    }
-    
-    .logo-item img {
-        width: 250px;
-        height: auto;
-        display: block;
-        object-fit: contain;
-    }
-    
-    .section-heading h2 {
-        margin-bottom: 30px;
-        font-size: 2.5rem;
-        color: #fff;
-    }
-    
-    @keyframes slide {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-    </style>
-    
 
-    <!-- footer -->
-
-<footer class="footer text-center">
-
-    <div class="footer-logo" style="text-align: center; margin-bottom: 30px;">
-        <a class="logo" href="https://wp.w3layouts.com/ui-portfolio/" style="font-size: 32px; font-weight: bold; color: white; text-decoration: none; display: inline-block;">
-            <i class="fab fa-asymmetrik"></i> UI Portfolio
-        </a>
-    </div>
-    
-    
-            
-                                    <div class="footer-contact-info mt-4">
-
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer py-5">
+        <div class="container py-md-4">
+            <div class="footer-logo">
+                <a class="logo" href="#">
+                    <i class="fab fa-asymmetrik"></i> UI Portfolio
+                </a>
+            </div>
+            <div class="footer-contact-info mt-4">
                 <ul>
-
-                                                            <li>
+                    <li>
                         <a href="tel:+12 345 678 900" class="contact-text-sub">
-                            <span class="fas fa-phone me-2"></span>  +12 345 678 900                        </a>
-                    </li>
-                    
-                                                            <li>
-                        <a href="/cdn-cgi/l/email-protection#8ce5e2eae3cce9f4ede1fce0e9a2efe3e1" class="contact-text-sub">
-                            <span class="fas fa-envelope me-2"></span><span class="__cf_email__" data-cfemail="ed84838b82ad88958c809d8188c38e8280">  examplegmail.com</span> 
+                            <span class="fas fa-phone me-2"></span>+12 345 678 900
                         </a>
                     </li>
                     
-                                                            <li>
-                        <p class="contact-text-sub"> 
-                            <span class="fas fa-map-marker me-2"></span>  208 Avenue street, UK - 62617.                        </p>
+                    <li>
+                        <a href="mailto:info@example.com" class="contact-text-sub">
+                            <span class="fas fa-envelope me-2"></span>info@example.com
+                        </a>
                     </li>
                     
+                    <li>
+                        <p class="contact-text-sub"> 
+                            <span class="fas fa-map-marker me-2"></span>208 Avenue street, UK - 62617.
+                        </p>
+                    </li>
                 </ul>
-
             </div>
-                        
         </div>
     </div>
 
     <div class="container py-4">
-        <div class="row footer-grids">
-<!-- copyright -->
-<div class="col-lg-6 text-lg-start" style="margin-top: 30px;">
-    <p class="CopyRights" style="margin: 0; font-size: 20px; color: #ccc; text-align: left; line-height: 1.6;">
-        © 2025 UI Portfolio. All Rights Reserved | WordPress Theme by <br>
-        <a href="https://w3layouts.com/" style="color: #0fd9d9; text-decoration: none;">W3Layouts</a>.
-    </p>
-</div>
-<!-- //copyright -->
-                <div class="col-lg-6 text-lg-end text-center mt-lg-0 mt-4 FooterSocial">
-                <div class="social">
-                    <ul>                                            
-                            <li><a href=""><span class="fab me-2 fa-facebook-f"></span></a></li>                                          
-                            <li><a href=""><span class="fab me-2 fa-twitter"></span></a></li>                                          
-                            <li><a href=""><span class="fab me-2 fa-google-plus"></span></a></li>                                            
-                            <li><a href=""><span class="fab me-2 fa-pinterest"></span></a></li>
-                    </ul>
-                </div>
+        <div class="footer-bottom d-flex justify-content-between align-items-center">
+            <div class="copyright">
+                <p class="CopyRights mb-0">&copy; 2025 UI Portfolio. All Rights Reserved | WordPress Theme by <a href="https://w3layouts.com/">W3Layouts.</a></p>
             </div>
-            
+            <div class="social">
+                <ul class="social-links d-flex mb-0">
+                    <li><a href="#"><span class="fab me-2 fa-facebook-f"></span></a></li>
+                    <li><a href="#"><span class="fab me-2 fa-twitter"></span></a></li>
+                    <li><a href="#"><span class="fab me-2 fa-google-plus"></span></a></li>
+                    <li><a href="#"><span class="fab me-2 fa-pinterest"></span></a></li>
+                    <li><a href="#"><span class="fab me-2 fa-vk"></span></a></li>
+                </ul>
+            </div>
         </div>
     </div>
-
 </footer>
-<!-- //footer -->
-    <style>
-        /* Dark mode toggle checkbox styles */
-        #theme-toggle:checked ~ body {
-            background-color: #112A12;
-            color: #fff;
-        }
-        #theme-toggle:checked ~ body header {
-            background-color: #0d2010;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        #theme-toggle:checked ~ body .nav-link {
-            color: #ddd;
-        }
-        #theme-toggle:checked ~ body .about,
-        #theme-toggle:checked ~ body .services,
-        #theme-toggle:checked ~ body .contact {
-            background-color: #0d2010;
-        }
-        #theme-toggle:checked ~ body #services {
-            color: #fff;
-        }
-        #theme-toggle:checked ~ body #services .service-title {
-            color: #fff;
-        }
-        #theme-toggle:checked ~ body .portfolio,
-        #theme-toggle:checked ~ body .skills,
-        #theme-toggle:checked ~ body .featured {
-            background-color: #112A12;
-        }
-        #theme-toggle:checked ~ body .service-card {
-            background-color: #0d2010;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        #theme-toggle:checked ~ body .social-links a {
-            background-color: #0d2010;
-            color: #00a86b;
-        }
-        #theme-toggle:checked ~ body .search-icon {
-            color: #ddd;
-        }
-        /* Toggle label styles */
-        .toggle-label {
-            width: 40px;
-            height: 22px;
-            background-color: transparent;
-            border-radius: 15px;
-            position: relative;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            color: #000;
-            font-size: 1.2rem;
-        }
-        .toggle-label .toggle-circle {
-            display: none;
-        }
-        #theme-toggle:checked + .toggle-label {
-            color: #fff;
-        }
-        #theme-toggle:checked + .toggle-label .light-icon {
-            display: none;
-        }
-        #theme-toggle:not(:checked) + .toggle-label .dark-icon {
-            display: none;
-        }
-    </style>
+
+    <script>
+        // Dark mode toggle functionality
+        document.querySelector('.dark-mode-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                document.querySelector('.toggle-circle').style.transform = 'translateX(18px)';
+            } else {
+                document.querySelector('.toggle-circle').style.transform = 'translateX(0)';
+            }
+        });
+    </script>
 </body>
-</html>
+ </html>
+
